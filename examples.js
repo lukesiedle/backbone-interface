@@ -1,19 +1,4 @@
 
-/* 
- *	@tests 
- */
-
-/*
-*	Now that we have an interface,
-*	we can comment on what each
-*	method does, and expose a 
-*	list of required objects and
-*	functions. The interface must
-*	be excluded in production.
-*/
-
-// Models //
-
 var ModelInterface = Backbone.Model.extend({
 	
 	// We can create a deeper object to implement // 
