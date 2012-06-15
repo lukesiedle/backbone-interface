@@ -3,6 +3,7 @@ backbone-interface
 
 An extension to Backbone core that allows interfaces to be implemented for stricter code organization.
 Place your interfaces in separate files with comments, allowing an overview of your Model's methods. 
+During implementation, errors will be thrown if the model does not contain the methods of the interface.
 Not to be used in production.
 
 Example:
