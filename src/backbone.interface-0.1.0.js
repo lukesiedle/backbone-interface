@@ -1,73 +1,20 @@
+(function() {
 
-/*
- *	@version
- *	0.1.0
- *
- *	@author
- *	Luke Siedle
- *	http://lukesiedle.me
- *	https://github.com/luke-siedle/backbone-interface
- *	
- *	@license
- *	MIT License
- *	
- */
+	// Define blank Backbone.Interface class
+	Backbone.Interface = function() {};
+		
+	// Assign the extend method to Backbone.Interface
+	Backbone.Interface.extend = Backbone.Model.extend;
 
-;(function(){
-	
-	// Apply to all aspects of Backbone //
-	var contexts	= { 
-		Model		: Backbone.Model, 
-		View		: Backbone.View, 
-		Collection	: Backbone.Collection, 
-		Router		: Backbone.Router 
-	};
-	
-	_.each( contexts, function( each, i ){
-		var prototype	= each.prototype,
-			extend		= each.extend,
-			Constructor	= each;
-		
-		// Rewrite constructor //
-		Backbone[ i ]	= function(){
-			Constructor.apply( this, arguments );
-			
-			// Implement interface after initialization //
-			if( this._interface ){
-				Backbone.Implements.call( this, this._interface );
-			}
-		}
-		
-		// Restore other properties //
-		Backbone[ i ].prototype = prototype;
-		Backbone[ i ].extend	= extend;
-		
-	});
-	
-	Backbone.Implements		= function( theInterface ){
-		
-		_.each( theInterface, function( obj, x ){
-			var self = this[ x ];
-			if( _.isFunction( obj ) ){
-				if( ! self || ! _.isFunction( self ) ){
-					Err( x, 'function', self );
-				}
-			}
-			
-			if( _.isObject(obj) && ! _.isObject( self ) ){
-				Err( x, 'object', self );
-			} else {
-				// Recurse //
-				Backbone.Implements.call( self, obj );
-			}
-			
-		}, this );
-		
-		function Err( name, type, got ){
-			throw new Error('(' + type + ') ' + name + ' '
-				+ 'expected by interface but got ('
-				+ typeof(got) + ') ' + got + ' instead.');
-		}
+	// A local method to extend the prototype
+	function implements(Interface) {
+		 _.extend(this.prototype, Interface.prototype);
 	}
-	
-})();
+
+	// Set up inheritance for the model, collection, router, view and history.
+	Backbone.Model.implements = Backbone.Collection.implements = Backbone.Router.implements = Backbone.View.implements = Backbone.History.implements = implements;
+
+	// Alias for 'implements'. Some people prefer 'implement'
+	Backbone.Model.implement = Backbone.Collection.implement = Backbone.Router.implement = Backbone.View.implement = Backbone.History.implement = implements;
+
+}());
