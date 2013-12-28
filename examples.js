@@ -1,81 +1,73 @@
-
 var ModelInterface = Backbone.Model.extend({
-	
-	// We can create a deeper object to implement // 
-	apiMethods	: {
-		lockDoor	: function(){}
-	},
-	
-	unLock	: function(){},
-
-	lock	: function(){}
-	
+    // We can create a deeper object to implement //
+    apiMethods: {
+        lockDoor: function () {}
+    },
+    unLock: function () {},
+    lock: function () {}
 });
 
-var MyModel		= Backbone.Model.extend({
-	
-	/*
-	 *	Implement the interface using the prototype
-	 *	but this could just as easily be 
-	 *	an object literal.
-	 */
-	
-	_interface	: ModelInterface.prototype,
-	apiMethods	: {
-		lockDoor	: 1
-	},
-	unLock		: 'A string.'
-	
+var MyModel = Backbone.Model.extend({
+    /*
+     *	Implement the interface using the prototype
+     *	but this could just as easily be
+     *	an object literal.
+     */
+    _interface: ModelInterface.prototype,
+    apiMethods: {
+        lockDoor: 1
+    },
+    unLock: 'A string.'
 });
 
 try {
-	new MyModel;
-} catch( e ){
-	console.log( e );
+    new MyModel;
+} catch (e) {
+    console.log(e);
 }
 
 // Views // 
-var ViewInterface		= {
-	showKeypad			: function(){},
-	hideKeypad			: function(){}
+var ViewInterface = {
+    showKeypad: function () {},
+    hideKeypad: function () {}
 };
 
-var MyView				= Backbone.View.extend({
-	_interface			: ViewInterface,
-	showKeypad			: function(){}
+var MyView = Backbone.View.extend({
+    _interface: ViewInterface,
+    showKeypad: function () {}
 });
 
 try {
-	new MyView;
-} catch( e ){
-	console.log( e );
+    new MyView;
+} catch (e) {
+    console.log(e);
 }
 
 
 // Collections //
 var CollectionInterface = {
-	getCombinations		: function(){}
+    getCombinations: function () {}
 };
 
-var MyCollection	= Backbone.Collection.extend({
-	_interface			: CollectionInterface,
-	getCombinations		: 'test'
+var MyCollection = Backbone.Collection.extend({
+    _interface: CollectionInterface,
+    getCombinations: 'test'
 });
 
 try {
-	new MyCollection;
-} catch( e ){
-	console.log( e );
+    new MyCollection;
+} catch (e) {
+    console.log(e);
 }
 
 // Router //
 
-var RouterInterface		= {
-	defaultRoute		: function(){}
+var RouterInterface = {
+    defaultRoute: function () {}
 };
 
-var MyRouter		= Backbone.Router.extend({
-	_interface		: RouterInterface
+var MyRouter = Backbone.Router.extend({
+    _interface: RouterInterface
 });
 
 // Uncaught //

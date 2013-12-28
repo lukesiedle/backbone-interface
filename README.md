@@ -11,36 +11,32 @@ Example:
 ```javascript
 
 var ModelInterface = Backbone.Model.extend({
-	
-	// We can create a deeper object to implement // 
-	apiMethods	: {
-		lockDoor	: function(){}
-	},
-	
-	unLock	: function(){},
-
-	lock	: function(){}
-	
+    // We can create a deeper object to implement //
+    apiMethods: {
+        lockDoor: function () {}
+    },
+    unLock: function () {},
+    lock: function () {}
 });
 
-var MyModel		= Backbone.Model.extend({
-	
-	/*
-	 *	Implement the interface using the prototype
-	 *	but this could just as easily be 
-	 *	an object literal.
-	 */
-	
-	_interface	: ModelInterface.prototype,
-	apiMethods	: {
-		lockDoor	: 1
-	},
-	unLock		: 'A string.'
-	
+var MyModel = Backbone.Model.extend({
+    /*
+     *	Implement the interface using the prototype
+     *	but this could just as easily be
+     *	an object literal.
+     */
+    _interface: ModelInterface.prototype,
+    apiMethods: {
+        lockDoor: 1
+    },
+    unLock: 'A string.'
 });
-
 
 new MyModel; // Throws an error //
 
 
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/piecioshka/backbone-interface/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
