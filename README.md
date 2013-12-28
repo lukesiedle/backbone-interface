@@ -36,3 +36,7 @@ new MyModel; // Throws an error //
 
 
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/piecioshka/backbone-interface/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
